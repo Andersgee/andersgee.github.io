@@ -25,19 +25,11 @@ ul.topnav li a {
 
 ul.topnav li a:hover:not(.active) {background-color: #444;}
 
-ul.topnav li a.active {
-  background-color: #111111;
-  /*font-weight: bold;*/
-}
+ul.topnav li a.active {background-color: #111;}
 
 ul.topnav li.right {float: right;}
 
-@media screen and (max-width: 767px){
-    ul.topnav li.right,
-    ul.topnav li {float: none;}
-}
-
-div.navbar {
+div.capwidth {
   max-width:767px;
   margin: auto;
 }
