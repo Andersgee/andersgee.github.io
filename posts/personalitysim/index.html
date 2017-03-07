@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>AndersGee's blog</title>
+    <link rel="icon" href="../../launcher-icon-4x.png">
+    <link rel="stylesheet" href="../../css/materialize.css">
+    <link rel="stylesheet" href="../../css/topnav.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    img {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+    </style>
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+    });
+  </script>
+  <script type="text/javascript" async
+    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
+  </script>
+  </head>
+
+  <body>
+    <ul class="topnav">
+      <div class="container">
+        <li><a href="../../index.html">Home</a></li>
+        <li class="right"><a href="../../contact.html">Contact</a></li>
+        <li class="right"><a href="../../about.html">About</a></li>
+      </div>
+    </ul>
+
+    <div class="container">
+
+      <div class="section"><h5><center>Personality Force</center></h5>
+        <p>
+          I found a paper [1] containing a factor analysis of how various "personality facets"
+          relates to the underlying "big five" personality traits (Neuroticism, Extraversion, Openness, Agreeableness and Conscientiousness).
+          These underlying personality traits have been found to remain relatively constant over time, and they are only five.
+          In summary: it seems that many facets of personality can be explained from just five "values" of these underlying traits.
+          The paper provides an empirical matrix $W$ explaining the general relationship between them:
+
+          $$W=
+          \begin{array}{lccccc}
+          \hline
+          Facets & N & E & O & A & C \\
+          \hline
+          Anxiety         & +0.80 & -0.09 & +0.05 & -0.01 & -0.03 \\
+          Angry hostility & +0.64 & +0.02 & -0.04 & -0.49 & -0.02 \\
+          Depression      & +0.77 & -0.15 & -0.00 & -0.04 & -0.20 \\
+          Self-consciousness & +0.75 & -0.22 & +0.08 & +0.04 & -0.07 \\
+          Impulsiveness   & +0.48 & +0.47 & +0.11 & -0.25 & -0.15 \\
+          Vulnerability & +0.67 & -0.14 & -0.16 & +0.11 & -0.40 \\
+          \hline
+          Warmth &      -0.21 & +0.57 & +0.26 & +0.46 & +0.09 \\
+          Gregariousness & -0.22 & +0.69 & -0.01 & +0.19 & +0.01 \\
+          Assertiveness & -0.27 & +0.52 & +0.17 & -0.31 & +0.43 \\
+          Activity & +0.00 & +0.49 & +0.18 & -0.20 & +0.58 \\
+          Excitement seeking & -0.12 & +0.63 & +0.10 & -0.22 & -0.05 \\
+          Positive emotions & -0.22 & +0.58 & +0.37 & +0.23 & +0.17 \\
+          \hline
+          Fantasy & +0.02 & +0.13 & +0.66 & -0.24 & -0.12 \\
+          Aesthetics & +0.08 & -0.08 & +0.68 & +0.23 & +0.02 \\
+          Feelings & +0.21 & +0.18 & +0.68 & +0.01 & +0.26 \\
+          Actions & -0.13 & +0.28 & +0.57 & +0.17 & -0.07 \\
+          Ideas & -0.17 & +0.01 & +0.69 & -0.13 & +0.08 \\
+          Values & -0.06 & +0.08 & +0.63 & -0.03 & -0.10 \\
+          \hline
+          Trust & -0.27 & +0.25 & +0.10 & +0.57 & +0.14 \\
+          Straightforwardness & -0.03 & -0.11 & -0.15 & +0.68 & +0.02 \\
+          Altruism & -0.14 & +0.26 & +0.06 & +0.63 & +0.34 \\
+          Compliance & -0.13 & -0.20 & -0.02 & +0.77 & +0.00 \\
+          Modesty & +0.15 & -0.23 & -0.12 & +0.56 & -0.13 \\
+          Tender-mindedness & +0.17 & +0.11 & +0.18 & +0.66 & +0.08 \\
+          \hline
+          Competence & -0.41 & +0.01 & +0.17 & +0.03 & +0.67 \\
+          Order & +0.11 & -0.09 & -0.16 & +0.11 & +0.66 \\
+          Dutifulness & -0.17 & -0.06 & -0.14 & +0.32 & +0.67 \\
+          Achievement striving & -0.05 & +0.14 & +0.07 & -0.09 & +0.77 \\
+          Self-discipline & -0.33 & -0.07 & -0.02 & +0.11 & +0.75 \\
+          Deliberation & -0.19 & -0.48 & -0.01 & +0.21 & +0.40 \\
+          \hline
+          \end{array}
+          $$
+          Starting with five random traits (in a vector $T$) we can produce the 30 facets with:
+          $$F=WT$$
+          </p>
+          <p>
+          Generating some personality traits this way and making them feel attraction/repulsion towards each other can be seen in the video below.
+          The felt force on each unit is calculated with Coulomb's law and also a strong repelling "nucleon-nucleon" force if very close.
+          </p>
+          <iframe style="width: 100%; height: 35vw" src="https://www.youtube.com/embed/RLDYD00SkqY"></iframe>
+      </div>
+
+
+      <div class="divider"></div>
+
+      <div class="section">
+        <p>
+          References: <br>
+        [1]. <a href="https://www.researchgate.net/publication/223048814_Four_Ways_Five_Factors_are_Basic">
+          Four Ways Five Factors are Basic (Paul Costa, Robert R. McCrae, 1992)</a>
+        </p>
+      </div>
+
+      <div class="divider"></div>
+
+    </div>
+  </body>
+</html>
