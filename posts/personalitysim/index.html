@@ -39,12 +39,11 @@
       <div class="section"><h5><center>Personality Force</center></h5>
         <p>
           I found a paper [1] containing a factor analysis of how various "personality facets"
-          relates to the underlying "big five" personality traits (Neuroticism, Extraversion, Openness, Agreeableness and Conscientiousness).
+          relates to the underlying "big five" personality traits (<b>N</b>euroticism, <b>E</b>xtraversion, <b>O</b>penness, <b>A</b>greeableness and <b>C</b>onscientiousness).
           These underlying personality traits have been found to remain relatively constant over time, and they are only five.
           In summary: it seems that many facets of personality can be explained from just five "values" of these underlying traits.
-          The paper provides an empirical matrix $W$ explaining the general relationship between them:
+          The paper provides an empirical matrix explaining the general relationship between them:
 
-          $$W=
           \begin{array}{lccccc}
           \hline
           Facets & N & E & O & A & C \\
@@ -85,16 +84,14 @@
           Deliberation & -0.19 & -0.48 & -0.01 & +0.21 & +0.40 \\
           \hline
           \end{array}
-          $$
-          Starting with five random traits (in a vector $T$) we can produce the 30 facets with:
-          $$F=WT$$
+          Starting with five random traits (in a vector $T$) and letting the matrix above be $W$, we can produce 30 facets with
+          $F=WT$. Generating some personality facets this way and making them feel
+		  attraction/repulsion towards each other (based on how similar their personalities are) gives an interesting simulation.
           </p>
           <p>
-          Generating some personality traits this way and making them feel
-		  attraction/repulsion towards each other (bases on how similar their personalities are)
-		  can be seen in the video below.
-          The felt force on each unit is calculated with Coulomb's and
-		  also a strong repelling "nucleon-nucleon" force if very close.
+      The felt force on each unit is calculated with <a href="https://en.wikipedia.org/wiki/Coulomb's_law">Coulomb's law</a> which gives the major behaviour.
+      Additionally to this, there are some minor behaviours: A strong repelling force if bumping into each other, a weak force that tries to keep them in the middle of the screen and
+      a weak (extra) force towards the most similar unit.
 
           </p>
           <div class="videowrapper">
