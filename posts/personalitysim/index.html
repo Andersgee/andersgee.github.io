@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../../css/materialize.css">
     <link rel="stylesheet" href="../../css/topnav.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="../../js/myscript.js"></script>
     <style>
     img {
       width: 100%;
@@ -111,7 +112,13 @@
       </div>
 
       <div class="divider"></div>
-
+      <p>
+        <center>
+          <script>
+          document.write("last modified: " + formatAsUKDate(new Date(document.lastModified)) +"");
+          </script>
+        </center>
+      </p>
     </div>
   </body>
 </html>
