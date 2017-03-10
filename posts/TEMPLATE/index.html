@@ -33,31 +33,27 @@
 
     <div class="container">
 
-      <div class="section"><h5><center>3d Grid LSTM</center></h5>
+      <div class="section"><h5><center>A template to be copied and edited into a new post</center></h5>
         <p>
-          Visualization of the gradients while a 3d Grid LSTM <a href="#references">[1]</a> is learning.
-          The colors are red green and blue in the three respective dimensions
-          and the size of the balls represent the magnitude of the gradient. For example: a big yellow ball would mean
-          the gradients are big in dimensions 1 and 2 (red, green) and not so big in dimension 3 (blue).
-          I only feed input in dimension 1 of the input cell (This is why the ball at the top corner of the cube is red) The output cell is in the opposite corner.
+          Link to reference section: <a href="#references">[1]</a>
         </p>
         <p>
-          Note that for the purpose of this visualization, a randomly generated but constant input vector $x$ and target vector $t$ are used.
-          The Grid LSTM thus learns the function $t=f(x)$ for a constant $x$ and $t$ which is the simplest possible version of any neural net architecture.
-        </p>
-        <div class="videowrapper"><iframe src="https://www.youtube.com/embed/zicZXGd_JAI" frameborder="0" allowfullscreen></iframe></div>
-        <p>
-          The learning scheme is Adam but with a learning rate about 10x higher than
-          normal, meaning that parameters are over-adjusted and oscillates to the
-          minimum instead of "slowing momentum when getting closer to the minimum".
-          I looks natural enough, and I think its because the human body always seem to over compensate
-          in response to external input.
+          LaTeX in text: $F=WT$.
         </p>
         <p>
-          The below video shows one way real neuronal activity can be visualized.
-          Play both videos at the same time to see some similarity.
+          Normal link: <a href="https://en.wikipedia.org/wiki/Coulomb's_law">Coulomb's law</a>
         </p>
-        <div class="videowrapper"><iframe src="https://www.youtube.com/embed/t3TaMU_qXMc?start=16&end=40" frameborder="0" allowfullscreen></iframe></div>
+        <p>
+          100% width and height image:
+        </p>
+        <img src="./images/g1.png">
+        <p>
+          iframe link in 16:9 ratio with 100% width:
+        </p>
+
+        <div class="videowrapper">
+          <iframe src="https://www.youtube.com/embed/RLDYD00SkqY" frameborder="0" allowfullscreen></iframe>
+        </div>
       </div>
 
       <div class="divider"></div>
@@ -65,9 +61,8 @@
       <div class="section"><a name="references"></a>
         <p>
           References: <br>
-
-        [1]. <a href="https://arxiv.org/abs/1507.01526">
-          Grid Long Short-Term Memory (Nal Kalchbrenner, Ivo Danihelka, Alex Graves, 2016)</a>
+        [1]. <a href="https://www.researchgate.net/publication/223048814_Four_Ways_Five_Factors_are_Basic">
+          Four Ways Five Factors are Basic (Paul Costa, Robert R. McCrae, 1992)</a>
         </p>
       </div>
 
