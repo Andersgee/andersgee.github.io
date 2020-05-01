@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../launcher-icon-4x.png">
+  <link rel="stylesheet" href="../../css/materialize.css">
+  <link rel="stylesheet" href="../../css/topnav.css">
+
+  <title>wasmMozart</title>
+  <script src="./js/webgl.js"></script>
+  <script src="./js/webaudio.js"></script>
+  <script src="./js/webassembly.js"></script>
+  <script src="./js/neuralnet.js"></script>
+  <script defer src="./js/main.js"></script>
+</head>
+<body>
+  <ul class="topnav">
+    <div class="container">
+      <li><a href="../../index.html">Home</a></li>
+      <li class="right"><a href="../../contact.html">Contact</a></li>
+      <li class="right"><a href="../../about.html">About</a></li>
+    </div>
+  </ul>
+
+  <div class="container">
+    
+    <div class="section"><h5><center>wasmMozart</center></h5>
+      <center><button class="waves-effect waves-light btn" id="startstop">loading...</button></center>
+      <p>Neural net trained on mozart music running in webassembly for infinite generation (live improvisation).</p>
+    </div>
+
+  </div>
+  <canvas id="canvas" width="1280" height="720"></canvas>
+</body>
+</html>
