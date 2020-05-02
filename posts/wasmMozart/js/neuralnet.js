@@ -29,7 +29,6 @@ function createviews() {
 
   ma = f32view(params.alfa.m,3)
   m = [f32view(params.beta1.m, 3), f32view(params.beta2.m, 3), f32view(params.beta3.m, 3)]
-  m = [f32view(params.beta1.m, 3), f32view(params.beta2.m, 3), f32view(params.beta3.m, 3)]
 
   allp = [
   [f32view(params.beta1.p1, 96), f32view(params.beta1.p2, 96), f32view(params.beta1.p3, 96)],
