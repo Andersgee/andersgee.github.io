@@ -6,6 +6,8 @@ async function fetchassets() {
 }
 
 function setup() {
+  biasslider = document.getElementById("biasslider");
+
   startstop = document.getElementById('startstop');
   params = parampointers();
   audio = webaudio();

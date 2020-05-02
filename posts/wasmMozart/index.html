@@ -25,8 +25,16 @@
   <div class="container">
     
     <div class="section"><h5><center>wasmMozart</center></h5>
-      <center><button class="waves-effect waves-light btn" id="startstop">loading...</button></center>
       <p>Neural net trained on mozart music running in webassembly for infinite generation (live improvisation).</p>
+      <center>
+        <button class="waves-effect waves-light btn" id="startstop">loading...</button>
+        <p class="range-field">
+          sampling bias when choosing notes:<br>
+          reckless<input id="biasslider" type="range" value="1.5" min="0.5" max="2.5" step="0.01" style="width: 50%;">careful
+        </p>
+        
+      </center>
+      
     </div>
 
   </div>

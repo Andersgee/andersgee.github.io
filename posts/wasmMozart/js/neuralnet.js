@@ -1,5 +1,6 @@
 function fprop(p, isbeta) {
-  var bias=2.0;
+  //var bias=1.5;
+  var bias = biasslider.value
   wasm.fprop(p.z,p.h,p.h2, p.W,p.b, p.Wz1,p.Uz1,p.bz1,p.Wr1,p.Ur1,p.br1,p.Wh1,p.Uh1,p.bh1, p.Wz2,p.Uz2,p.bz2,p.Wr2,p.Ur2,p.br2,p.Wh2,p.Uh2,p.bh2);
   wasm.mixture_m(p.m, p.z, p.Wm, p.bm, bias, 96*4, 3*4);
   if (isbeta) {
