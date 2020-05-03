@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../launcher-icon-4x.png">
+  <link rel="stylesheet" href="../../css/materialize.css">
+  <link rel="stylesheet" href="../../css/topnav.css">
+
+  <title>wasmShakespeare</title>
+  <script src="./js/webassembly.js"></script>
+  <script src="./js/neuralnet.js"></script>
+  <script defer src="./js/main.js"></script>
+</head>
+<body>
+  <ul class="topnav">
+    <div class="container">
+      <li><a href="../../index.html">Home</a></li>
+      <li class="right"><a href="../../contact.html">Contact</a></li>
+      <li class="right"><a href="../../about.html">About</a></li>
+    </div>
+  </ul>
+
+  <div class="container">
+    
+    <div class="section"><h5><center>wasmShakespeare</center></h5>
+      <p>neural net trained on shakespeare text running in webassembly.</p>
+      <center>
+        <button class="waves-effect waves-light btn" id="startstop">loading...</button>
+        <p><div id="shakespearetext">generated text goes here</div></p>
+      </center>
+      
+    </div>
+
+    <div class="divider"></div>
+  </div>
+</body>
+</html>
