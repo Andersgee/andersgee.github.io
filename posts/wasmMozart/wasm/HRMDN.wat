@@ -16,6 +16,7 @@
     (f32.div (f32.mul (f32.mul (get_local $x) (get_local $x) (get_local $x))) (get_local $y))
   )
 
+  ;;tested
   (func $mixture_m (export "mixture_m") (param $y i32) (param $z i32) (param $Wm i32) (param $bm i32) (param $bias f32) (param $L i32) (param $L2 i32)
     (call $matmuladd2 (get_local $y) (get_local $Wm) (get_local $z) (get_local $bm) (get_local $L) (get_local $L2))
     (call $softmaxbiased (get_local $y) (get_local $y) (get_local $bias) (get_local $L2))
@@ -34,6 +35,7 @@
     (local $x i32)
     (set_local $x (i32.const 0)) ;;always keep x at zero for easy read in js
     (set_local $L (i32.const 384))
+    ;;(set_local $L (i32.const 520)) ;;65
 
     ;;function fprop!(x, z, h, b)
     ;;  z = leakyrelu.(W*x .+ b, 0.1)
@@ -81,7 +83,7 @@
     (set_local $r (i32.const 384)) ;;pointers to temp arrays of size 96*4
     (set_local $z (i32.const 768))
     (set_local $hnew (i32.const 1152))
-
+    
     (call $sigmdoublematmuladd (get_local $r)                  (get_local $Wr) (get_local $x) (get_local $Ur) (get_local $h) (get_local $br) (get_local $L))
     (call $sigmdoublematmuladd (get_local $z)                  (get_local $Wz) (get_local $x) (get_local $Uz) (get_local $h) (get_local $bz) (get_local $L))
     (call $tanhdoublematmuladd2 (get_local $hnew)              (get_local $Wh) (get_local $x) (get_local $Uh) (get_local $h) (get_local $r) (get_local $bh) (get_local $L))
@@ -142,7 +144,8 @@
     (call $vecdivscalar (get_local $y) (get_local $y) (get_local $m) (get_local $L))
   )
 
-  (func $sigm (param $x f32) (result f32)
+  ;;tested
+  (func $sigm (export "sigm") (param $x f32) (result f32)
     ;;1/(1+exp(-x))
     (f32.div (f32.const 1) (f32.add (f32.const 1) (call $exp (f32.neg (get_local $x)))))
   )
@@ -186,6 +189,7 @@
       (set_local $pa (i32.add (get_local $pa) (i32.const 4))) ;;increment
       (set_local $pb (i32.add (get_local $pb) (i32.const 4))) ;;increment
       (set_local $py2 (i32.add (get_local $py2) (i32.const 4))) ;;increment
+      (set_local $t (i32.add (get_local $t) (i32.const 4))) ;;increment
       (br_if $continue (i32.lt_u (tee_local $py (i32.add (get_local $py) (i32.const 4))) (get_local $N)))
     )
   )
@@ -201,6 +205,7 @@
       ))
       (set_local $pa (i32.add (get_local $pa) (i32.const 4))) ;;increment
       (set_local $pb (i32.add (get_local $pb) (i32.const 4))) ;;increment
+      (set_local $t (i32.add (get_local $t) (i32.const 4))) ;;increment
       (br_if $continue (i32.lt_u (tee_local $py (i32.add (get_local $py) (i32.const 4))) (get_local $N)))
     )
   )
@@ -365,6 +370,7 @@
     )
   )
 
+  ;;tested
   (func $leakyrelumatmuladd (export "leakyrelumatmuladd") (param $py i32) (param $pw i32) (param $px i32) (param $pb i32) (param $L i32)
     (local $pxi i32)
     (local $N i32)
@@ -393,6 +399,7 @@
     )
   )
 
+  ;;tested
   (func $matmuladd2 (export "matmuladd2") (param $py i32) (param $pw i32) (param $px i32) (param $pb i32) (param $L i32) (param $L2 i32)
     (local $pxi i32)
     (local $N i32)
@@ -452,6 +459,7 @@
     )
   )
 
+  ;;tested
   (func $sigmdoublematmuladd (export "sigmdoublematmuladd") (param $py i32) (param $pw i32) (param $px i32) (param $pw2 i32) (param $px2 i32) (param $pb i32) (param $L i32)    (local $pxi i32)
     (local $px2i i32)
     (local $N i32)
@@ -484,6 +492,7 @@
     )
   )
   
+  ;;tested
   (func $tanhdoublematmuladd (export "tanhdoublematmuladd") (param $py i32) (param $pw i32) (param $px i32) (param $pw2 i32) (param $px2 i32) (param $pr i32) (param $pb i32) (param $L i32)
     (local $pxi i32)
     (local $px2i i32)
@@ -530,7 +539,7 @@
     )
   )
 
-
+  ;;tested
   (func $tanhdoublematmuladd2 (export "tanhdoublematmuladd2") (param $py i32) (param $pw i32) (param $px i32) (param $pw2 i32) (param $px2 i32) (param $pr i32) (param $pb i32) (param $L i32)
     (local $pxi i32)
     (local $px2i i32)

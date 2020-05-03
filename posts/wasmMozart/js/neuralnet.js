@@ -261,6 +261,10 @@ function storemodel(model,params) {
 
     set_memory(params[param], model[param])
   }
+
+  var zerovector = new Float32Array(96)
+  set_memory(params.h, zerovector) //start with zero recurrent memories
+  set_memory(params.h2, zerovector)
 }
 
 ////////////////////////////////////////////////////////////////////
