@@ -28,6 +28,7 @@ mat3 dir2rotmat(vec3 b) {
 
 void main() {
   op = pos; 
+  float v = (velocity > 0.05) ? max(0.25, velocity) : 0.0;
   vec3 dir = normalize(vec3(0.0, 1.0, -0.08*velocity*(1.0+0.5*black)));
   vec3 rotatedpos = dir2rotmat(dir)*pos;
   vec3 offset = vec3(xpos, 0.0, 0.0);
