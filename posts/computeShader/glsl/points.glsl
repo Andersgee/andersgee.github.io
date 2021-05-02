@@ -12,10 +12,10 @@ vec4 fetchAgent(int id) {
 // https://webgl2fundamentals.org/webgl/lessons/webgl-drawing-without-data.html
 
 void main() {
-  gl_PointSize = 16.0;
   vec4 agent = fetchAgent(gl_VertexID);
   vec2 pos = agent.xy * 2.0 - 1.0;
   gl_Position = vec4(pos, 0.0, 1.0);
+  gl_PointSize = 8.0;
 }
 
 #endif
