@@ -33,6 +33,7 @@ function shaderlayout() {
       texture0: "uniform1i",
       texture1: "uniform1i",
       sqrtNagents: "uniform1i",
+      mousePos: "uniform2fv",
     },
   };
 
@@ -42,9 +43,17 @@ function shaderlayout() {
     texture0: 0,
     texture1: 1,
     sqrtNagents: 200,
+    mousePos: [-1, -1],
   };
 
   return [layout, uniforms];
+}
+
+function relativeEventPos(e) {
+  let rect = e.target.getBoundingClientRect();
+  let x = e.clientX - rect.left;
+  let y = rect.height - (e.clientY - rect.top);
+  return [x / rect.width, y / rect.height];
 }
 
 function debounce(fn, ms) {
@@ -78,13 +87,29 @@ function readPixelsFromBuffer(gl, fb) {
 
 function main(glsl) {
   const canvas = document.getElementById("canvas");
+  const [layout, uniforms] = shaderlayout();
 
   handleSizing(canvas);
   window.addEventListener(
     "resize",
     debounce(() => handleSizing(canvas), 100)
   );
-  const [layout, uniforms] = shaderlayout();
+
+  canvas.addEventListener("mousedown", (e) => {
+    let [x, y] = relativeEventPos(e);
+    uniforms.mousePos = [x, y];
+  });
+
+  canvas.addEventListener("mousemove", (e) => {
+    if (uniforms.mousePos[0] > 0) {
+      let [x, y] = relativeEventPos(e);
+      uniforms.mousePos = [x, y];
+    }
+  });
+
+  canvas.addEventListener("mouseup", (e) => {
+    uniforms.mousePos = [-1, -1];
+  });
 
   const gl = glcontext(canvas);
 

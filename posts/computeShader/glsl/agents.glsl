@@ -14,6 +14,7 @@ uniform sampler2D texture0; // agents
 uniform sampler2D texture1; // trails
 
 uniform float iTime;
+uniform vec2 mousePos;
 // uniform vec2 iResolution;
 
 out vec4 newagent;
@@ -71,7 +72,14 @@ void main(void) {
   newdir.x = (newpos.x > 1.0 || newpos.x < 0.0) ? -newdir.x + rx : newdir.x;
   newdir.y = (newpos.y > 1.0 || newpos.y < 0.0) ? -newdir.y + ry : newdir.y;
 
-  newdir = normalize(newdir) * 0.5 + 0.5; // rescale to 0..1
+  if (mousePos.x > 0.0) {
+    // bias toward mouse when clicking/dragging on canvas
+    vec2 biasdir = mousePos - newpos;
+    newdir = normalize(newdir + 0.5 * biasdir) * 0.5 + 0.5;
+  } else {
+    newdir = normalize(newdir) * 0.5 + 0.5; // rescale to 0..1
+  }
+
   newagent = vec4(clamp01(newpos), clamp01(newdir));
 }
 
