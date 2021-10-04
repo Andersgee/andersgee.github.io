@@ -49,11 +49,12 @@ function shaderlayout() {
   return [layout, uniforms];
 }
 
-function relativeEventPos(e) {
-  let rect = e.target.getBoundingClientRect();
-  let x = e.clientX - rect.left;
-  let y = rect.height - (e.clientY - rect.top);
-  return [x / rect.width, y / rect.height];
+function relativeEventPos(canvas, e) {
+  const rect = canvas.getBoundingClientRect();
+  const dpr = window.devicePixelRatio || 1;
+  var x = (e.pageX - canvas.offsetLeft) * dpr;
+  var y = rect.height -  (e.pageY - canvas.offsetTop) * dpr;
+  return [x / rect.width, y / rect.height]
 }
 
 function debounce(fn, ms) {
@@ -72,8 +73,13 @@ function handleSizing(canvas) {
   const aspectratio = 21 / 9;
   const { width } = canvas.getBoundingClientRect();
   const height = Math.round(width / aspectratio);
-  canvas.width = width;
-  canvas.height = height;
+  //canvas.width = width;
+  //canvas.height = height;
+
+  // set the size of the drawingBuffer
+  const devicePixelRatio = window.devicePixelRatio || 1;
+  canvas.width = width * devicePixelRatio;
+  canvas.height = height * devicePixelRatio;
 }
 
 function readPixelsFromBuffer(gl, fb) {
@@ -96,13 +102,13 @@ function main(glsl) {
   );
 
   canvas.addEventListener("mousedown", (e) => {
-    let [x, y] = relativeEventPos(e);
+    let [x, y] = relativeEventPos(canvas,e);
     uniforms.mousePos = [x, y];
   });
 
   canvas.addEventListener("mousemove", (e) => {
     if (uniforms.mousePos[0] > 0) {
-      let [x, y] = relativeEventPos(e);
+      let [x, y] = relativeEventPos(canvas,e);
       uniforms.mousePos = [x, y];
     }
   });

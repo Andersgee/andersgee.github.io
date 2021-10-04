@@ -75,7 +75,7 @@ void main(void) {
   if (mousePos.x > 0.0) {
     // bias toward mouse when clicking/dragging on canvas
     vec2 biasdir = mousePos - newpos;
-    newdir = normalize(newdir + 0.5 * biasdir) * 0.5 + 0.5;
+    newdir = normalize(newdir + 0.25 * biasdir) * 0.5 + 0.5;
   } else {
     newdir = normalize(newdir) * 0.5 + 0.5; // rescale to 0..1
   }
